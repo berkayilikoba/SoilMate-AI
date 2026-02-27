@@ -40,7 +40,7 @@ The project is built on a robust, end-to-end cloud infrastructure that facilitat
 
 At the heart of Soilmate AI is a core logic that processes diverse input data through specialized models to produce actionable insights.
 
-![Soilmate AI AI Model and Data Flow Diagram](path/to/your/image_0.png)
+![Soilmate AI AI Model and Data Flow Diagram](https://github.com/user-attachments/assets/689edcab-769a-414f-87bc-21b9f620b87c)
 
 ### Inputs, Models, and Outputs
 
