@@ -40,7 +40,7 @@ The project features an end-to-end pipeline designed to manage agricultural dive
 ## Demo Video
 
 You can watch the project overview and system demonstration video here:
-[[Link to your Video - e.g., YouTube or Drive Link](https://youtu.be/XHE3Vss5oUo)]
+[[Link](https://youtu.be/XHE3Vss5oUo)]
 
 ---
 
