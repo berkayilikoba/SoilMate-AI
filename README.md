@@ -1,70 +1,139 @@
-# SoilMate AI
+# SoilMate AI  
 ### AI-Powered Smart Soil Analysis & Regional Plant Care Management System
 
-[cite_start]**SoilMate AI** is an advanced agricultural forecasting and risk management ecosystem built on **Huawei Cloud** and the **MindSpore** framework[cite: 15, 25]. [cite_start]Optimized for the 7 geographical regions of Turkey, the project combines deep learning models with cloud-based IoT data to generate strategic decisions for sustainable agriculture[cite: 25, 103].
+**SoilMate AI** is an end-to-end Smart Agriculture SaaS solution designed to combat inefficient resource usage and yield loss in farming. Built on **Huawei Cloud** and the **MindSpore** framework, the system replaces traditional guesswork with data-driven precision, specifically optimized for the 7 geographical regions of Turkey.
 
 ---
 
 ## Achievements
-* [cite_start]**Huawei Developer Competition:** First Place in Europe (Winner)[cite: 1].
-* [cite_start]**Technology Partner:** Developed as part of the **Huawei Cloud & MindSpore** Ecosystem[cite: 15, 25].
+
+- **Huawei Developer Competition:** First Place in Europe (Winner)  
+- **Technology Partner:** Developed as part of the Huawei Cloud & MindSpore Ecosystem  
 
 ---
 
-## System Architecture
+## Technical Architecture & Workflow
 
-The project features an end-to-end cloud infrastructure designed to manage agricultural diversity and varying climatic conditions across different regions:
+The project features a robust cloud infrastructure designed to manage agricultural diversity and varying climatic conditions.
 
-![SoilMate System Architecture](assets/architecture.png)
+![System Architecture](https://github.com/user-attachments/assets/82d410e1-edc0-442c-89ce-a97b431532ac)
 
-* [cite_start]**Edge Layer (Tarla):** In-field data is modeled using a Python Simulation (Sensor_Adana_01) which generates real-time sensor data (N, P, K, pH, and Moisture)[cite: 72, 88].
-* [cite_start]**Cloud Ingestion:** Data is uploaded via MQTT to the **Huawei Cloud IoTDA** platform, which acts as the secure gateway for ingestion[cite: 72, 74].
-* [cite_start]**Application Logic (Huawei ECS):** The core compute engine hosts the application logic and the interactive web dashboard[cite: 72, 77].
-* [cite_start]**Data Storage & Model Registry (Huawei OBS):** **OBS** serves as the central hub for regional model weights and historical datasets[cite: 72, 76].
-* [cite_start]**AI Services (Huawei ModelArts):** Historical data is processed by **ModelArts** using **MindSpore** to train predictive risk models[cite: 25, 75].
-* [cite_start]**User Layer:** All insights and recommendations are presented through a **Streamlit** dashboard hosted on ECS[cite: 27, 72].
+### System Layers
+
+### Edge Layer (Field)
+In-field data is modeled using a Python simulation (`Sensor_Adana_01`) which generates real-time sensor data including:
+
+- Nitrogen (N)  
+- Phosphorus (P)  
+- Potassium (K)  
+- pH  
+- Moisture  
+
+---
+
+### Cloud Ingestion
+Data is uploaded via MQTT to **Huawei Cloud IoTDA**, acting as the secure gateway for ingestion and device management.
+
+---
+
+### Application Logic (Huawei ECS)
+The core compute engine hosts the backend logic and interactive web dashboard, ensuring 24/7 availability.
+
+---
+
+### Data Storage & Model Registry (Huawei OBS)
+OBS stores:
+
+- Regional model weights  
+- Historical datasets (CSV)  
+- AI artifacts  
+
+---
+
+### AI Services (Huawei ModelArts)
+Historical data is processed in ModelArts to train predictive risk models using MindSpore. Trained models are stored back in OBS.
 
 ---
 
 ## AI Model & Data Flow
 
-SoilMate AI utilizes a hybrid model structure to process diverse inputs and produce actionable agricultural prescriptions:
+SoilMate AI utilizes a hybrid model structure to process diverse inputs and produce actionable insights.
 
-![SoilMate AI Model and Data Flow](assets/dataflow.png)
+![AI Model and Data Flow](https://github.com/user-attachments/assets/dd24019f-e031-4774-9824-82e7a480acc8)
 
-* [cite_start]**HybridModelGen:** A Bi-Directional LSTM architecture (64 units) that predicts Temperature, Rainfall, and Humidity[cite: 83].
-* [cite_start]**HybridModelNDVI:** An LSTM-based model (16 units) focused on monitoring vegetation health via NDVI indices[cite: 84].
-* [cite_start]**Key Outputs:** * **Crop Recommendation:** Precise suggestions for 1-month and 3-month periods[cite: 85].
-    * [cite_start]**Risk Scoring:** Quantitative assessment of agricultural risks like drought or frost[cite: 85, 90].
-    * [cite_start]**Actionable Suggestions:** Data-driven prescriptions to optimize resource use[cite: 71, 85].
+### Models
+
+#### HybridModelGen
+- Bi-Directional LSTM (64 units)  
+- Predicts:
+  - Temperature (T)  
+  - Rainfall (R)  
+  - Humidity (H)
+
+#### HybridModelNDVI
+- LSTM-based model (16 units)  
+- Monitors vegetation health using NDVI indices  
+
+---
+
+## Key Outputs
+
+- **Crop Recommendation**  
+  Precise suggestions for 1-month and 3-month planning  
+
+- **Risk Scoring**  
+  Quantitative assessment of agricultural risks such as drought or frost  
+
+- **Actionable Suggestions**  
+  Data-driven prescriptions for optimized fertilizer and water usage  
 
 ---
 
 ## Key Features
-* [cite_start]**Geographical Segmentation:** 7 distinct model architectures tailored to regional micro-climates in Turkey[cite: 103].
-* [cite_start]**NDVI-Based Analysis:** AI-driven monitoring of plant health and vegetation indices[cite: 17, 26].
-* [cite_start]**Long-Term Forecasting:** Accurate projections for 1-month and 3-month periods[cite: 26, 85].
-* [cite_start]**Dynamic Risk Management:** Real-time reporting of environmental risks[cite: 85, 90].
-* [cite_start]**Cost-Effective AI:** Models are trained in ModelArts but stored in OBS to avoid expensive always-on inference costs[cite: 92, 93].
+
+- **Geographical Segmentation**  
+  7 distinct model architectures tailored to regional micro-climates  
+
+- **NDVI-Based Analysis**  
+  AI-driven monitoring of vegetation health  
+
+- **Long-Term Forecasting**  
+  1-month and 3-month predictive projections  
+
+- **Dynamic Risk Management**  
+  Real-time environmental risk reporting  
+
+- **Cost-Effective AI Infrastructure**  
+  Models trained in ModelArts and stored in OBS to avoid always-on inference costs  
 
 ---
 
-## Demo Video
-You can watch the project overview and system demonstration video here:
-[Link to your Video - e.g., YouTube or Drive Link]
+## Demo & Live Dashboard
+
+- **Demo Site:**  
+  http://188.239.52.182:8501/
+
+- **Demo Video:**  
+  [Add your video link here]
 
 ---
 
-## Huawei Cloud Services Utilized
+## Huawei Cloud Services Used
 
-| Service | Function |
-| :--- | :--- |
-| **MindSpore** | [cite_start]Development and optimization of Gen & NDVI deep learning models [cite: 15, 25] |
-| **ModelArts** | [cite_start]Distributed model training and AI lifecycle management [cite: 15, 75] |
-| **OBS** | [cite_start]Secure storage for regional model weights and historical big data [cite: 15, 76] |
-| **ECS** | [cite_start]Hosting the application logic and Streamlit-based analytical dashboard [cite: 15, 77] |
-| **IoT DA** | [cite_start]Real-time ingestion and management of in-field sensor data [cite: 15, 74] |
+| Service | Purpose |
+|----------|----------|
+| **MindSpore** | Deep learning model development & optimization |
+| **ModelArts** | Distributed training & AI lifecycle management |
+| **OBS** | Secure storage for model weights & datasets |
+| **ECS** | Backend logic & Streamlit dashboard hosting |
+| **IoTDA** | Real-time sensor data ingestion & device management |
 
 ---
 
-[cite_start]**Developers:** Nisa GÜVELOĞLU, Akın KAFADAR, Berkay ILIKOBA, Münevver DEMİRAY [cite: 57, 58, 59, 60]
+## Team Cukurova
+
+- **Nisa GÜVELOĞLU** — IoT Integration
+- **Akın KAFADAR** — Cloud Architect
+- **Berkay ILIKOBA** — AI Architect
+
+---
