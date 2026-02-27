@@ -1,7 +1,9 @@
 # Soilmate AI 
 ### AI-Powered Smart Soil Analysis & Regional Plant Care Management System
 
-**Soilmate AI** is an advanced agricultural forecasting and risk management ecosystem built on **Huawei Cloud** and the **MindSpore** framework. Optimized for the 7 geographical regions of Turkey, the project combines deep learning models with cloud-based IoT data to generate strategic decisions for sustainable agriculture.
+**Soilmate AI** is an advanced agricultural forecasting and risk management ecosystem built on **Huawei Cloud** and the **MindSpore** framework. Specifically optimized for the 7 geographical regions of Turkey, the project combines deep learning models with cloud-based IoT data to generate strategic decisions for sustainable agriculture.
+
+This platform allows farmers and agricultural planners to make data-driven decisions by providing region-specific forecasts and risk assessments, ultimately aiming for increased yield and environmental sustainability.
 
 ---
 
@@ -11,29 +13,59 @@
 
 ---
 
-## Technical Architecture & Workflow
+## System Architecture
 
-The project features an end-to-end pipeline designed to manage agricultural diversity and varying climatic conditions across different regions:
+The project is built on a robust, end-to-end cloud infrastructure that facilitates data flow from the field to a user-facing dashboard. The architecture is composed of an Edge Layer, a rich Huawei Cloud Platform Layer, and a User Layer.
 
-* **Regional Model Training (ModelArts & MindSpore):** Turkey is segmented into 7 distinct geographical regions. Independent Genetic and NDVI models have been trained using region-specific datasets to account for micro-climates.
-* **Model Storage & Management (OBS):** Specialized model weights for each region are categorized and stored on Huawei OBS (Object Storage Service) for high availability and seamless retrieval.
-* **Data Processing & IoT:** Real-time environmental data (Temperature, Humidity, Rainfall) is ingested from field sensors through the Huawei Cloud IoT DA platform.
+![Soilmate AI System Architecture Diagram](path/to/your/image_1.png)
 
+### Architectural Workflow
 
+1.  **Edge Layer (Tarla):** In-field data is currently modeled using a **Python Simulation (Sensor\_Adana\_01)** which generates sensor data for the selected region.
+2.  **Cloud Ingestion:** This simulation uploads data via **MQTT Data Upload** to the **Huawei Cloud IoTDA** platform (the Ingestion & MQTT Gateway).
+3.  **Application Logic (Huawei ECS):** From IoTDA, data is forwarded to the **Huawei ECS (App Server)**.
+    * The App Server requests models from storage.
+    * It processes incoming sensor data alongside returned models.
+    * It generates results for **Prediction**, **Risk Analysis**, and **Recommendation**.
+    * It simultaneously archives sensor data in storage.
+4.  **Data Storage & Model Registry (Huawei OBS):** **OBS** serves as the central storage hub, managing:
+    * Regional model weights (Trained Models).
+    * Historical sensor data.
+5.  **AI Services (Huawei ModelArts):** Historical data is sent from OBS to **ModelArts** for continuous or one-time **AI Prediction**, and the resulting Trained Models are sent back to OBS.
+6.  **User Layer:** All processed information and recommendations are streamed to an interactive **Smart Dashboard (Streamlit)** for user access.
 
-* **Intelligent Forecasting:** Utilizing historical data and NDVI analysis, the system generates high-precision forecasts for temperature, humidity, and rainfall on 1-month and 3-month scales.
-* **Risk Scoring & Recommendation Engine:** Forecast results are converted into dynamic, region-specific risk scores, providing users with actionable agricultural advice.
-* **Visualization (ECS & Streamlit):** This entire architecture is visualized through an interactive Streamlit dashboard hosted on a Huawei ECS (Elastic Cloud Server) instance.
+---
+
+## AI Model & Data Flow
+
+At the heart of Soilmate AI is a core logic that processes diverse input data through specialized models to produce actionable insights.
+
+![Soilmate AI AI Model and Data Flow Diagram](path/to/your/image_0.png)
+
+### Inputs, Models, and Outputs
+
+* **Data Inputs:**
+    * **IoT Device:** Provides direct in-field data: **N**itrogen, **P**hosphorus, **K**assium, and **pH**.
+    * **HybridModelGen:** A data simulation component that generates regional weather-related parameters: **T**emperature (T), **R**ainfall (R), **H**umidity (H), **E**vapotranspiration (ET), and **S**oil **M**oisture (SM).
+    * **HybridModelNDVI:** Focuses on vegetation health, providing Normalized Difference Vegetation Index (**NDVI**) data.
+* **Specialized AI Models:**
+    * **Crop Recommendation Model:** Processes Nitrogen, Potassium, pH (from IoT) and Temperature, Rainfall, Humidity (from HybridModelGen).
+    * **Risk Analysis and Suggestion Model:** Processes Temperature, Rainfall, Humidity, Evapotranspiration, Soil Moisture (from HybridModelGen) and NDVI (from HybridModelNDVI).
+* **AI-Generated Outputs:**
+    * **Crop Recommendation (1 month):** Immediate agricultural suggestions.
+    * **Crop Recommendation (3 months):** Longer-term agricultural planning advice.
+    * **Risk Score:** Quantitative assessment of agricultural risks.
+    * **Suggestion:** Categorical actions based on risk and analysis.
 
 ---
 
 ## Key Features
 
-* **Geographical Segmentation:** 7 distinct model architectures tailored to regional micro-climates.
+* **Geographical Segmentation:** 7 distinct model architectures tailored to regional micro-climates of Turkey.
 * **NDVI-Based Analysis:** AI-driven monitoring of plant health and vegetation indices.
-* **Long-Term Forecasting:** Accurate climate projections for 1-month and 3-month periods.
-* **Dynamic Risk Management:** Real-time reporting of risks such as drought, frost, or excessive rainfall.
-* **Smart Recommendations:** Strategic planting and maintenance advice based on predictive analytics.
+* **Long-Term Forecasting:** Accurate climate and crop projections for 1-month and 3-month periods.
+* **Dynamic Risk Management:** Real-time reporting and scoring of risks such as drought or excessive rainfall.
+* **Smart Recommendations:** Strategic crop selection and maintenance advice based on predictive analytics.
 
 ---
 
@@ -48,11 +80,11 @@ You can watch the project overview and system demonstration video here:
 
 | Service | Function |
 | :--- | :--- |
-| **MindSpore** | Development and optimization of Gen & NDVI deep learning models |
-| **ModelArts** | Distributed model training and AI lifecycle management |
-| **OBS** | Secure storage of regional model weights and large datasets |
-| **ECS** | 24/7 hosting of the Streamlit-based analytical dashboard |
-| **IoT DA** | Real-time data ingestion from field sensors |
+| **MindSpore** | Primary deep learning framework for Gen & NDVI model development and optimization |
+| **ModelArts** | Distributed model training, AI lifecycle management, and prediction services |
+| **OBS (Object Storage)** | Secure and centralized storage for regional model weights and data archives |
+| **ECS (Elastic Cloud)** | 24/7 hosting for the Streamlit-based dashboard and core application logic |
+| **IoT DA** | Real-time ingestion and management of in-field sensor data |
 
 ---
 
