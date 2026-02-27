@@ -114,7 +114,7 @@ SoilMate AI utilizes a hybrid model structure to process diverse inputs and prod
   http://188.239.52.182:8501/
 
 - **Demo Video:**  
-  [Add your video link here]
+  [[link](https://youtu.be/XHE3Vss5oUo)]
 
 ---
 
