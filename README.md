@@ -17,7 +17,8 @@ This platform allows farmers and agricultural planners to make data-driven decis
 
 The project is built on a robust, end-to-end cloud infrastructure that facilitates data flow from the field to a user-facing dashboard. The architecture is composed of an Edge Layer, a rich Huawei Cloud Platform Layer, and a User Layer.
 
-![Soilmate AI System Architecture Diagram](path/to/your/image_1.png)
+![Soilmate AI System Architecture Diagram](https://github.com/user-attachments/assets/f4789661-f1c4-4ce5-ae21-93b168d67fd9)
+
 
 ### Architectural Workflow
 
