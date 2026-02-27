@@ -125,5 +125,3 @@ Proactive infrastructure monitoring ensures uninterrupted 24/7 service.
 * **Berkay ILIKOBA** — AI Architect
 
 ---
-
-Başka bir ekleme yapmak istersen buradayım Berkay. GitHub profiline bu halini eklememi ister misin?
