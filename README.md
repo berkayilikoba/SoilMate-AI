@@ -132,7 +132,7 @@ SoilMate AI utilizes a hybrid model structure to process diverse inputs and prod
 
 ## Team Cukurova
 
-- **Nisa GÜVELOĞLU** — IoT Integration
+- **Nisa GÜVELOĞLU** — Team Leader & IoT Integration
 - **Akın KAFADAR** — Cloud Architect
 - **Berkay ILIKOBA** — AI Architect
 
