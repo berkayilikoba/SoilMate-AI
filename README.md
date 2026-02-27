@@ -8,12 +8,14 @@
 
 ## Achievements
 
-* **Huawei Developer Competition:** First Place in Europe (Winner)
+* **Huawei Developer Competition:** 🥇 First Place in Europe (Winner)
 * **Technology Partner:** Developed as part of the Huawei Cloud & MindSpore Ecosystem
 
 ---
 
 ## Technical Architecture & Workflow
+
+![Technical Architecture](https://github.com/user-attachments/assets/0abc9ba8-cc17-4f84-a53f-cbd6abda374b)
 
 The project features a robust cloud infrastructure designed to manage agricultural diversity and varying climatic conditions.
 
@@ -52,6 +54,8 @@ Historical data is processed in ModelArts to train predictive risk models using 
 ---
 
 ## AI Model & Data Flow
+![AI Model & Data Flow](https://github.com/user-attachments/assets/a6dcc3c8-98c6-40a5-960a-b9deb6adb18e)
+
 
 SoilMate AI utilizes a hybrid model structure to process diverse inputs and produce actionable insights.
 
@@ -61,23 +65,24 @@ SoilMate AI utilizes a hybrid model structure to process diverse inputs and prod
 * **HybridModelNDVI:** LSTM-based model (16 units) monitors vegetation health using NDVI indices.
 
 ---
+---
 
-## Cloud Security & Compliance (Defense in Depth)
+## Cloud Security & Compliance
 
-Security is a core pillar of SoilMate AI. We implemented a strict **"Defense in Depth"** strategy to ensure data integrity and system availability:
+SoilMate AI is built on a **Defense in Depth** security architecture to ensure data integrity, availability, and operational resilience.
 
-* **VPC & Strict Security Groups:** Our `SoilMate-SG` network rules are strictly configured. We only expose **Port 8501** for the Streamlit dashboard and **Port 22** for secure admin access. All other ports are completely blocked.
-* **Identity and Access Management (IAM):** We strictly follow the **Principle of Least Privilege**. The root account is never used for daily operations. Instead, dedicated IAM users and temporary **AK/SK (Access Key/Secret Key)** credentials are used for API communications (e.g., writing to OBS).
-* **Host Security Service (HSS):** Our ECS server is actively monitored by **Huawei HSS** from the inside, scanning for vulnerabilities and automatically blocking malicious activities like Brute Force attacks. The server is officially certified as **"Protected"** by Huawei Cloud.
+* **VPC & Security Groups:** Minimal attack surface. Only **Port 8501** (Dashboard) and **Port 22** (SSH Admin) are exposed. All other ports are strictly blocked.
+* **IAM & Least Privilege:** Root accounts are never used. Access is managed via dedicated IAM users and temporary **AK/SK** credentials for secure API communication.
+* **Host Security (HSS):** Continuous vulnerability scanning, brute-force attack detection, and real-time protection. ECS instance status: **Protected**.
 
 ---
 
-## Observability & Autonomous Monitoring
+## Observability & Monitoring
 
-To guarantee 24/7 uninterrupted service for farmers, we implemented proactive monitoring:
+Proactive infrastructure monitoring ensures uninterrupted 24/7 service.
 
-* **Huawei Cloud Eye:** Continuously monitors the health of our ECS compute engine.
-* **Autonomous Alarms:** We configured a custom alarm rule: If the server's CPU usage exceeds **80%**, the system automatically triggers an alert via **Mail/SMS**. This allows us to catch and resolve potential bottlenecks before the server crashes.
+* **Cloud Eye:** Real-time performance and health monitoring of the ECS compute engine.
+* **Autonomous Alerts:** Automated Mail/SMS notifications triggered when CPU usage exceeds **80%**, enabling preventive incident response.
 
 ---
 
