@@ -20,7 +20,7 @@ SoilMate AI is a hybrid artificial intelligence architecture that optimizes agri
 ## 📁 Project Structure
 
 ```text
-SoilMate2/
+SoilMate-AI/
 │
 ├── Master Data/             # Raw and merged master CSVs extracted via GEE
 ├── Sample Data/             # Grouped datasets for 3, 5, 7, 10, 14, 15, 20, and 30-day periods
@@ -35,8 +35,8 @@ SoilMate2/
 
 1. **Clone the Repository:**
 ```bash
-git clone https://github.com/YOUR_USERNAME/SoilMate2.git
-cd SoilMate2
+git clone https://github.com/berkayilikoba/SoilMate-AI.git
+cd SoilMate-AI
 ```
 
 2. **Run via Google Colab:**
